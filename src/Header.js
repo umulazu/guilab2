@@ -4,33 +4,35 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: "Ярославль",
-            cityId: ""          //TODO: пробрасывать в родительский state. Не хранить тут вообще state lifting
+            city: "Ярославль"
         };
         this.input = React.createRef();
     };
 
     handleSubmitCity = (e) => {
         e.preventDefault();
-        let value = this.input.current.value;
+        let value = this.input.current.value.toLowerCase();
         let cities = {
-            "ярославль": "",
-            "рыбинск": "",
-            "кострома": "",
-            "вологда": "",
-            "москва": "",
-            "санкт-Петербург": ""
+            "ярославль": 0,
+            "рыбинск": 1,
+            "кострома": 2,
+            "вологда": 3,
+            "москва": 4,
+            "санкт-Петербург": 5
         };
 
-        if (!(cities.hasOwnProperty(value.toLowerCase()))) {
+        if (!(cities.hasOwnProperty(value))) {
             // TODO: заменить alert чем-то красивым
             alert("Введите известный город!");
-            return;
+            return null;
         }
+
         this.setState({
-            cityId: cities[value],
             city: value.charAt(0).toUpperCase() + value.slice(1)
         });
+
+        console.log(`value for ${cities[value]} is ${value}`);        //TODO: --
+        // this.props.handleButtonClick(cities[value]);
     };
 
     render() {
@@ -59,9 +61,9 @@ class Header extends React.Component {
                     {/*Collect the nav links, forms, and other content for toggling*/}
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-item nav-link nav__mode_current-day active" onClick={this.props.handleMenuItem} href="#">Сейчас<span className="sr-only">(current)</span></a>
-                            <a className="nav-item nav-link nav__mode_3-day" href="../public/index.html">На 3 дня</a>
-                            <a className="nav-item nav-link nav__mode_5-day" href="../public/index.html">На 5 дней</a>
+                            <a className="nav-item nav-link nav__mode_current-day active" onClick={(e) => this.props.handleMenuItem(e, 1)} href="../public/index.html">Сейчас<span className="sr-only">(current)</span></a>
+                            <a className="nav-item nav-link nav__mode_3-day" onClick={(e) => this.props.handleMenuItem(e, 3)} href="../public/index.html">На 3 дня</a>
+                            <a className="nav-item nav-link nav__mode_5-day" onClick={(e) => this.props.handleMenuItem(e, 5)} href="../public/index.html">На 5 дней</a>
                         </div>
                     </div>
                     {/*/.navbar-collapse*/}
