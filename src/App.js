@@ -7,13 +7,16 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            forecastMode: 0,
-            cityId: 0
+            forecastMode: 1,
+            cityId: 468902
         };
     }
 
     setForecastMode = (e, mode) => {
         e.preventDefault();
+        e.target.closest(".navbar-nav").querySelector(".active").className = e.target.closest(".navbar-nav").querySelector(".active").className.replace(/ active/, "");
+        e.target.className += " active";
+
         this.setState({
             forecastMode: mode
         });
@@ -23,7 +26,7 @@ class App extends Component {
 
     setCityId = (cityId) => {
         this.setState({cityId});
-        // console.log(this.state);    //TODO: --
+        // console.log("устанавливаем cityId в App:" + this.state.cityId);    //TODO: --
     };
 
     render() {

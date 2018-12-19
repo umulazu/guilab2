@@ -13,12 +13,12 @@ class Header extends React.Component {
         e.preventDefault();
         let value = this.input.current.value.toLowerCase();
         let cities = {
-            "ярославль": 0,
-            "рыбинск": 1,
-            "кострома": 2,
-            "вологда": 3,
-            "москва": 4,
-            "санкт-Петербург": 5
+            "ярославль": 468902,
+            "рыбинск": 500004,
+            "кострома": 543878,
+            "вологда": 472459,
+            "москва": 524894,
+            "санкт-петербург": 536203
         };
 
         if (!(cities.hasOwnProperty(value))) {
@@ -30,13 +30,10 @@ class Header extends React.Component {
         this.setState({
             city: value.charAt(0).toUpperCase() + value.slice(1)
         });
-
-        console.log(`value for ${cities[value]} is ${value}`);        //TODO: --
-        // this.props.handleButtonClick(cities[value]);
+        this.props.handleButtonClick(cities[value]);
     };
 
     render() {
-
         return (
             <div id="menu-container">
                 {/*menu*/}
@@ -53,7 +50,7 @@ class Header extends React.Component {
                         {/* SEARCHING FOR CITY*/}
                         <form name="form_container" className="navbar-form navbar-left" onSubmit={this.handleSubmitCity}>
                             <div className="form-group">
-                                <input type="text" defaultValue={this.state.city} ref={this.input} className="form-control" required pattern="[А-Яа-я ]{1,15}" size="15"/>
+                                <input type="text" defaultValue={this.state.city} ref={this.input} className="form-control" required pattern="[А-Яа-я- ]{1,16}" size="16"/>
                             </div>
                             <button type="submit" className="btn btn-default">Найти</button>
                         </form>
@@ -61,7 +58,7 @@ class Header extends React.Component {
                     {/*Collect the nav links, forms, and other content for toggling*/}
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-item nav-link nav__mode_current-day active" onClick={(e) => this.props.handleMenuItem(e, 1)} href="../public/index.html">Сейчас<span className="sr-only">(current)</span></a>
+                            <a className="nav-item nav-link nav__mode_current-day active" onClick={(e) => this.props.handleMenuItem(e, 1)} href="../public/index.html">Сейчас</a>
                             <a className="nav-item nav-link nav__mode_3-day" onClick={(e) => this.props.handleMenuItem(e, 3)} href="../public/index.html">На 3 дня</a>
                             <a className="nav-item nav-link nav__mode_5-day" onClick={(e) => this.props.handleMenuItem(e, 5)} href="../public/index.html">На 5 дней</a>
                         </div>
@@ -72,5 +69,6 @@ class Header extends React.Component {
         );
     }
 }
+
 
 export default Header;
