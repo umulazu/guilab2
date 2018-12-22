@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,6 @@ class Header extends React.Component {
         };
 
         if (!(cities.hasOwnProperty(value))) {
-            // TODO: заменить alert чем-то красивым
             alert("Введите известный город!");
             return null;
         }
@@ -37,7 +37,7 @@ class Header extends React.Component {
         return (
             <div id="menu-container">
                 {/*menu*/}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light ">
                     <div className="navbar-header">
                         <a className="navbar-brand" href="../public/index.html">Погода в городе {this.state.city}</a>
                         {/*collapsed menu*/}

@@ -1,12 +1,7 @@
-// условный рендеринг трех вариантов прогноза с передачей города сюда в props
-
-// в state храним весь json для выбранного города
-// меняем state в constructor, при update(мб, какие-то еще событий life cycle
-
-
-
 import React, { Component } from 'react';
 
+
+//запасной token appid=a48628e4534c9233dc2e2b44dde18f60
 class Main extends Component {
     render() {
         console.log(this.props.cityId);
@@ -32,7 +27,6 @@ class Main extends Component {
         )
     }
 }
-
 
 function checkWeatherImage(weatherJSON) {
     const id = weatherJSON["weather"][0]["id"];
@@ -77,6 +71,58 @@ function checkDate(dt) {
     return dt.slice(5, 11);
 }
 
+class Day extends  React.Component {
+    handleClick = (flag) => {
+        if (flag) {
+            this.props.handleClickOnDay(-1);
+        } else {
+            this.props.handleClickOnDay(this.props.index);
+        }
+    };
+
+    render() {
+        let {day, weatherJSON, index, idOfActiveDay} = this.props;
+        let isActive = idOfActiveDay === index;
+        let forRender = isActive ? (
+            <div className="col" onClick={this.handleClick.bind(this, isActive)}>
+                <div className="row justify-content-center">
+                    <p>{checkDate(day["dt_txt"])}</p>
+                </div>
+                <hr></hr>
+                <h2>Ночь: {~~(day["main"]["temp"] - 273.15)}&#176;C</h2>
+                <p>{checkWeatherImage(day)}</p>
+                <hr></hr>
+                <h2>День: {~~(weatherJSON["list"][index+5]["main"]["temp"] - 273.15)}&#176;C</h2>
+                <p>{checkWeatherImage(weatherJSON["list"][index+5])}</p>
+                <hr></hr>
+                <b><u>Средняя температура: </u></b><h2>{~~((day["main"]["temp"] - 2 * 273.15 + weatherJSON["list"][index+5]["main"]["temp"]) / 2)}&#176;C</h2>
+                <p><i>{day["weather"][0]["description"]}</i></p>
+                <hr></hr>
+                <p><u>Скорость ветра:</u> {day["wind"]["speed"]} м/сек</p>
+                <p><u>Влажность:</u> {day["main"]["humidity"]}%</p>
+                <p><u>Видимость:</u> {day["main"]["pressure"]}%</p>
+            </div>
+        ) : (
+            <div className="col" onClick={this.handleClick.bind(this, isActive)}>
+                <div className="row justify-content-center">
+                    <p>{checkDate(day["dt_txt"])}</p>
+                </div>
+                <hr></hr>
+                <h2>Ночь: {~~(day["main"]["temp"] - 273.15)}&#176;C</h2>
+                <p>{checkWeatherImage(day)}</p>
+                <hr></hr>
+                <h2>День: {~~(weatherJSON["list"][index+5]["main"]["temp"] - 273.15)}&#176;C</h2>
+                <p>{checkWeatherImage(weatherJSON["list"][index+5])}</p>
+                <hr></hr>
+                <p><i>{day["weather"][0]["description"]}</i></p>
+            </div>
+        );
+
+        return (forRender);
+    }
+}
+
+// 3 modes
 class CurrentWeather extends React.Component {
     constructor(props) {
         super(props);
@@ -88,29 +134,29 @@ class CurrentWeather extends React.Component {
     }
 
     fetchCurrentWeather(cityId) {
-        // // Where we're fetching data from
-        // fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=b725faec3be149931cdf9b6773e4f321&lang=ru`)
-        // // We get the API response and receive data in JSON format...
-        //     .then(response => response.json())
-        //     // ...then we update the CurrentWeathers state
-        //     .then(data => {
-        //         // myjson = JSON.stringify(data);
-        //         console.log(`устанавливаем state в fetche: ${JSON.stringify(data)}`);
-        //         this.setState({
-        //             weatherJSON: data,
-        //             isLoading: false,
-        //         });
-        //         console.log(`state.isLoading в fetche: ${this.state.isLoading}`);
-        //
-        //     })
-        //     // Catch any errors we hit and update the app
-        //     .catch(error => this.setState({ error, isLoading: false }));
+        // Where we're fetching data from
+        fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=b725faec3be149931cdf9b6773e4f321&lang=ru`)
+        // We get the API response and receive data in JSON format...
+            .then(response => response.json())
+            // ...then we update the CurrentWeathers state
+            .then(data => {
+                // myjson = JSON.stringify(data);
+                console.log(`устанавливаем state в fetche: ${JSON.stringify(data)}`);
+                this.setState({
+                    weatherJSON: data,
+                    isLoading: false,
+                });
+                console.log(`state.isLoading в fetche: ${this.state.isLoading}`);
 
-        //TODO: на некоторое время отключим API
-        this.setState({
-            weatherJSON: {"coord":{"lon":39.87,"lat":57.63},"weather":[{"id":600,"main":"Snow","description":"light snow","icon":"13n"}],"base":"stations","main":{"temp":266.15,"pressure":1037,"humidity":79,"temp_min":266.15,"temp_max":266.15},"visibility":9000,"wind":{"speed":4,"deg":180},"clouds":{"all":90},"dt":1545161400,"sys":{"type":1,"id":9023,"message":0.1176,"country":"RU","sunrise":1545112832,"sunset":1545136460},"id":468902,"name":"Yaroslavl","cod":200},
-            isLoading:false
-        });
+            })
+            // Catch any errors we hit and update the app
+            .catch(error => this.setState({ error, isLoading: false }));
+
+        // //TODO: на некоторое время отключим API
+        // this.setState({
+        //     weatherJSON: {"coord":{"lon":39.87,"lat":57.63},"weather":[{"id":600,"main":"Snow","description":"light snow","icon":"13n"}],"base":"stations","main":{"temp":266.15,"pressure":1037,"humidity":79,"temp_min":266.15,"temp_max":266.15},"visibility":9000,"wind":{"speed":4,"deg":180},"clouds":{"all":90},"dt":1545161400,"sys":{"type":1,"id":9023,"message":0.1176,"country":"RU","sunrise":1545112832,"sunset":1545136460},"id":468902,"name":"Yaroslavl","cod":200},
+        //     isLoading:false
+        // });
     }
 
     componentDidMount() {
@@ -133,17 +179,35 @@ class CurrentWeather extends React.Component {
         const { isLoading, weatherJSON, error } = this.state;
         return (
             <React.Fragment>
-                <h1>Сейчас</h1>
+                <div className=" row justify-content-center"><h1>Сейчас</h1></div>
                 {error ? <p>{error.message}</p> : null}
                 {!isLoading ? (
-                    <div key={weatherJSON["dt"]}>
-                        <p>Обновлено в {(new Date()).getHours()}:{(new Date()).getMinutes()}</p>
-                        <h2>{~~(weatherJSON["main"]["temp"] - 273.15)}&#176;C</h2>
-                        {checkWeatherImage(weatherJSON)}
-                        <p>{weatherJSON["weather"][0]["description"]}</p>
-                        <p>Скорость ветра: {weatherJSON["wind"]["speed"]} м/сек</p>
-                        <p>Давление: {~~(0.75*weatherJSON["main"]["pressure"])} мм рт. ст.</p>
-                        <p>Влажность: {weatherJSON["main"]["humidity"]}%</p>
+                    <div key={weatherJSON["dt"]} className = "container col-md-6 ">
+                        <hr></hr>
+                        <div className="row justify-content-md-center">
+                            Обновлено в {(new Date()).getHours()}:{(new Date()).getMinutes()}
+                        </div>
+                        <hr></hr>
+                        <div className="row justify-content-md-center">
+                            <div className="col-md-2">
+                                <h2>{~~(weatherJSON["main"]["temp"] - 273.15)}&#176;C</h2>
+                            </div>
+                            <div className="col-md-2" >
+                                {checkWeatherImage(weatherJSON)}
+                            </div>
+                        </div>
+                        <hr></hr>
+                        <div className="row justify-content-md-center">
+                            <div className="col-md-auto">
+                                <i>{weatherJSON["weather"][0]["description"]}</i>
+                            </div>
+                        </div>
+                        <hr></hr>
+                        <div className="row justify-content-md-center">
+                            <div className="col-md-auto">Ветер: {weatherJSON["wind"]["speed"]} м/сек</div>
+                            <div className="col-md-auto">Давление: {~~(0.75*weatherJSON["main"]["pressure"])} мм. рт. ст.</div>
+                            <div className="col-md-auto">Влажность: {weatherJSON["main"]["humidity"]} %</div>
+                        </div>
                     </div>
                 ) : (
                     <h3>Загрузка...</h3>
@@ -152,7 +216,6 @@ class CurrentWeather extends React.Component {
         );
     }
 }
-
 class ForecastForThreeDays extends React.Component {
     constructor(props) {
         super(props);
@@ -199,48 +262,71 @@ class ForecastForThreeDays extends React.Component {
         }
     }
 
+
     render() {
         const { isLoading, weatherJSON, error } = this.state;
         return (
-            <React.Fragment>
-                <h1>Прогноз на 3 дня</h1>
-                {error ? <p>{error.message}</p> : null}
-                {!isLoading ? (
-                    weatherJSON["list"].slice(0, 24).map((day, index) => {
-                        if (index % 8 === 0) {
-                            return (
-                                <div key={day["dt"]}>
-                                    <p>{checkDate(day["dt_txt"])}</p>
-                                    Температура ночью: <h2>{~~(day["main"]["temp"] - 273.15)}&#176;C</h2>
-                                    <p>{checkWeatherImage(day)}</p>
-                                    Температура днем: <h2>{~~(weatherJSON["list"][index+5]["main"]["temp"] - 273.15)}&#176;C</h2>
-                                    <p>{checkWeatherImage(weatherJSON["list"][index+5])}</p>
-                                    <p>{day["weather"][0]["description"]}</p>
-                                    <p>Скорость ветра: {day["wind"]["speed"]} м/сек</p>
-                                    <p>Влажность: {day["main"]["humidity"]}%</p>
-                                </div>
-                            )
-                        } else {
-                            return null;
-                        }
-                    })
-                ) : (
-                    <h3>Загрузка...</h3>
-                )}
-            </React.Fragment>
+            <div className="container">
+                <div className="row justify-content-center"><div className="col-md-auto"><h1>Прогноз на 3 дня</h1></div></div>
+                <div className="row justify-content-center">
+                    <p>Сегодня {(new Date()).getDate()} {(new Date()).toLocaleString('ru', {month: 'short'})}</p>
+                </div>
+                <hr></hr>
+                <div className="row ">
+                    {error ? <p>{error.message}</p> : null}
+                    {!isLoading ? (
+                        weatherJSON["list"].slice(0, 24).map((day, index) => {
+                            if (index % 8 === 0) {
+                                return (
+                                    <div key={day["dt"]} className="col">
+                                        <div className="row justify-content-center">
+                                            <div className="col-auto">{checkDate(day["dt_txt"])}</div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="row justify-content-center">
+                                            <div className="col-auto"><b>Ночь:</b> <h2>{~~(day["main"]["temp"] - 273.15)}&#176;C</h2></div>
+                                            <div className="col-auto">{checkWeatherImage(day)}</div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="row justify-content-center">
+                                            <div className="col-auto"><b>День:</b> <h2>{~~(weatherJSON["list"][index+5]["main"]["temp"] - 273.15)}&#176;C</h2></div>
+                                            <div className="col-auto">{checkWeatherImage(weatherJSON["list"][index+5])}</div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="row justify-content-center">
+                                            <div className="col auto"><i>{day["weather"][0]["description"]}</i></div>
+                                            <div className="col auto">Ветер: {day["wind"]["speed"]} м/сек</div>
+                                            <div className="col auto">Влажность: {day["main"]["humidity"]}%</div>
+                                        </div>
+                                        <hr></hr>
+                                    </div>
+                                )
+                            } else {
+                                return null;
+                            }
+                        })
+                    ) : (
+                        <h3>Загрузка...</h3>
+                    )}
+                </div>
+            </div>
         );
     }
 }
-
 class ForecastForFiveDays extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            idOfActiveDay: -1,
             isLoading: true,
             weatherJSON: {},
             error: null
         }
     }
+
+    handleClickOnDay = (id) => {
+        this.setState({idOfActiveDay: id});
+    };
 
     fetchFiveDaysForecast(cityId) {
         // Where we're fetching data from
@@ -282,31 +368,36 @@ class ForecastForFiveDays extends React.Component {
         const { isLoading, weatherJSON, error } = this.state;
         return (
             <React.Fragment>
-                <h1>Прогноз на 5 дней</h1>
-                <p>Сегодня {(new Date()).getDate()} {(new Date()).toLocaleString('ru', {month: 'short'})}</p>
+                <div className="row justify-content-center">
+                    <h1>Прогноз на 5 дней</h1>
+                </div>
+                <div className="row justify-content-center">
+                    <p>Сегодня {(new Date()).getDate()} {(new Date()).toLocaleString('ru', {month: 'short'})}</p>
+                </div>
+                <hr></hr>
+
                 {error ? <p>{error.message}</p> : null}
-                {!isLoading ? (
-                    weatherJSON["list"].map((day, index) => {
-                        if (index % 8 === 0) {
-                            return (
-                                <div key={day["dt"]}>
-                                    <p>{checkDate(day["dt_txt"])}</p>
-                                    Температура ночью: <h2>{~~(day["main"]["temp"] - 273.15)}&#176;C</h2>
-                                    <p>{checkWeatherImage(day)}</p>
-                                    Температура днем: <h2>{~~(weatherJSON["list"][index+5]["main"]["temp"] - 273.15)}&#176;C</h2>
-                                    <p>{checkWeatherImage(weatherJSON["list"][index+5])}</p>
-                                    <p>{day["weather"][0]["description"]}</p>
-                                    <p>Скорость ветра: {day["wind"]["speed"]} м/сек</p>
-                                    <p>Влажность: {day["main"]["humidity"]}%</p>
-                                </div>
-                            )
-                        } else {
-                            return null;
-                        }
-                    })
-                ) : (
-                    <h3>Загрузка...</h3>
-                )}
+                <div className="row justify-content-center">
+                    {!isLoading ? (
+                        weatherJSON["list"].map((day, index) => {
+                            if (index % 8 === 0) {
+                                return (
+                                    <Day key={day["dt"]}
+                                         day = {day}
+                                         index = {index}
+                                         weatherJSON = {weatherJSON}
+                                         handleClickOnDay = {this.handleClickOnDay}
+                                         idOfActiveDay = {this.state.idOfActiveDay}
+                                    />
+                                );
+                            } else {
+                                return null;
+                            }
+                        })
+                    ) : (
+                        <h3>Загрузка...</h3>
+                    )}
+                </div>
             </React.Fragment>
         );
     }
