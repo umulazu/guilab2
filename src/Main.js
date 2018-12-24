@@ -135,7 +135,7 @@ class CurrentWeather extends React.Component {
 
     fetchCurrentWeather(cityId) {
         // Where we're fetching data from
-        fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=b725faec3be149931cdf9b6773e4f321&lang=ru`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=b725faec3be149931cdf9b6773e4f321&lang=ru`)
         // We get the API response and receive data in JSON format...
             .then(response => response.json())
             // ...then we update the CurrentWeathers state
@@ -228,7 +228,7 @@ class ForecastForThreeDays extends React.Component {
 
     fetchThreeDaysForecast(cityId) {
         // Where we're fetching data from
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=a48628e4534c9233dc2e2b44dde18f60&lang=ru`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=a48628e4534c9233dc2e2b44dde18f60&lang=ru`)
         // We get the API response and receive data in JSON format...
             .then(response => response.json())
             // ...then we update the CurrentWeathers state
@@ -330,7 +330,7 @@ class ForecastForFiveDays extends React.Component {
 
     fetchFiveDaysForecast(cityId) {
         // Where we're fetching data from
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=a48628e4534c9233dc2e2b44dde18f60&lang=ru`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=a48628e4534c9233dc2e2b44dde18f60&lang=ru`)
         // We get the API response and receive data in JSON format...
             .then(response => response.json())
             // ...then we update the CurrentWeathers state
