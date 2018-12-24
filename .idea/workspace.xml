@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="292bee4e-e14a-4919-949a-a15f7fbbbc67" name="Default" comment="" />
+    <list default="true" id="292bee4e-e14a-4919-949a-a15f7fbbbc67" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Header.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,21 +17,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+            <state relative-caret-position="204">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.js">
+      <file leaf-file-name="Header.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="332" column="20" selection-start-line="332" selection-start-column="20" selection-end-line="332" selection-end-column="20" />
+            <state relative-caret-position="238">
+              <caret line="100" column="22" lean-forward="true" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
+              <folding>
+                <element signature="n#!!block;n#constructor#0;n#Header#0" />
+                <element signature="e#257#866#0" />
+                <element signature="e#368#574#0" />
+                <element signature="e#898#1315#0" />
+                <element signature="e#1131#1309#0" />
+                <element signature="n#!!block;n#render#0;n#Header#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,13 +74,13 @@
         <option value="$PROJECT_DIR$/src/app.scss" />
         <option value="$PROJECT_DIR$/src/app.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/Header.js" />
         <option value="$PROJECT_DIR$/src/Footer.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/src/Main.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Header.js" />
       </list>
     </option>
   </component>
@@ -100,6 +112,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,11 +120,15 @@
               <item name="guilab2" type="b2602c69:ProjectViewProjectNode" />
               <item name="guilab2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="guilab2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="guilab2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -157,6 +174,8 @@
       <workItem from="1545508439130" duration="944000" />
       <workItem from="1545510843448" duration="706000" />
       <workItem from="1545653158073" duration="495000" />
+      <workItem from="1545656553756" duration="15000" />
+      <workItem from="1545673286514" duration="3770000" />
     </task>
     <task id="LOCAL-00001" summary="finally: props from Header to App by Reverse Data-Flow&#10;starting: Main">
       <created>1545142766865</created>
@@ -197,7 +216,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81471000" />
+    <option name="totallyTimeSpent" value="85256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -248,7 +267,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -442,20 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../gui-lab1/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -490,9 +495,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://G:/guilab2/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://G:/guilab2/package.json" />
     <entry file="file://G:/gui-lab1/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -524,25 +527,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state>
           <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="332" column="20" selection-start-line="332" selection-start-column="20" selection-end-line="332" selection-end-column="20" />
+        <state relative-caret-position="646">
+          <caret line="315" column="50" selection-start-line="315" selection-start-column="50" selection-end-line="315" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!block;n#checkWeatherImage#0" />
+            <element signature="n#!!block;n#checkDate#0" />
+            <element signature="n#Day#0" />
+            <element signature="n#!!block;n#render#0;n#Day#0" />
+            <element signature="n#CurrentWeather#0" />
+            <element signature="n#!!block;n#constructor#0;n#CurrentWeather#0" />
+            <element signature="n#!!block;n#fetchCurrentWeather#0;n#CurrentWeather#0" />
+            <element signature="e#5741#5783#0" />
+            <element signature="n#!!block;n#componentDidMount#0;n#CurrentWeather#0" />
+            <element signature="n#!!block;n#componentDidUpdate#0;n#CurrentWeather#0" />
+            <element signature="n#!!block;n#render#0;n#CurrentWeather#0" />
+            <element signature="n#ForecastForThreeDays#0" />
+            <element signature="n#!!block;n#constructor#0;n#ForecastForThreeDays#0" />
+            <element signature="n#!!block;n#fetchThreeDaysForecast#0;n#ForecastForThreeDays#0" />
+            <element signature="e#9759#9798#0" />
+            <element signature="n#!!block;n#componentDidMount#0;n#ForecastForThreeDays#0" />
+            <element signature="n#!!block;n#componentDidUpdate#0;n#ForecastForThreeDays#0" />
+            <element signature="n#!!block;n#render#0;n#ForecastForThreeDays#0" />
+            <element signature="n#ForecastForFiveDays#0" />
+            <element signature="n#!!block;n#constructor#0;n#ForecastForFiveDays#0" />
+            <element signature="e#28307#28358#0" />
+            <element signature="n#!!block;n#fetchFiveDaysForecast#0;n#ForecastForFiveDays#0" />
+            <element signature="e#29053#29092#0" />
+            <element signature="n#!!block;n#componentDidMount#0;n#ForecastForFiveDays#0" />
+            <element signature="n#!!block;n#componentDidUpdate#0;n#ForecastForFiveDays#0" />
+            <element signature="n#!!block;n#render#0;n#ForecastForFiveDays#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        <state relative-caret-position="289">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="100" column="22" lean-forward="true" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Header#0" />
+            <element signature="e#257#866#0" />
+            <element signature="e#368#574#0" />
+            <element signature="e#898#1315#0" />
+            <element signature="e#1131#1309#0" />
+            <element signature="n#!!block;n#render#0;n#Header#0" />
+          </folding>
         </state>
       </provider>
     </entry>

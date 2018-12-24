@@ -13,13 +13,7 @@ class App extends Component {
         };
     }
 
-    setForecastMode = (e, mode) => {
-        e.preventDefault();
-        // возможно работу с e.target.class лучше вынести в сам Header, аналогично с выбором города setCityId.
-        e.target.closest(".navbar-nav").querySelector(".active").className = e.target.closest(".navbar-nav").querySelector(".active").className.replace(/ active/, "");
-        e.target.className += " active";
-
-        // а это оставить здесь в любом случае
+    setForecastMode = (mode) => {
         this.setState({
             forecastMode: mode
         });
